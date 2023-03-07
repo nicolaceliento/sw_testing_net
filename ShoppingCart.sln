@@ -8,9 +8,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{3AECBC1E-32DB-4BB2-93ED-5453D551D02F}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		sonar-project.properties = sonar-project.properties
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.UnitTests", "ShoppingCart.UnitTests\ShoppingCart.UnitTests.csproj", "{68D6B1AE-FBD5-4D70-BD78-245AC0FCFF51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.UnitTests", "ShoppingCart.UnitTests\ShoppingCart.UnitTests.csproj", "{68D6B1AE-FBD5-4D70-BD78-245AC0FCFF51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingCart.Contracts;
@@ -11,6 +12,9 @@ namespace ShoppingCart.UnitTests
         ShoppingCartController _controller;
         IShoppingCartService _service;
 
+        /// <summary>
+        /// OneTimeSetUp method that is called once to perform setup before any child tests are run
+        /// </summary>
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
