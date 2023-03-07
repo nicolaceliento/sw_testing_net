@@ -31,7 +31,7 @@ jobs:
         run: dotnet test --no-restore --verbosity normal
 
       - name: Static Analysis with Sonar Cloud (SonarQube cloud version)
-        uses: sonarsource/sonarcloud-github-action@main
+        uses: sonarsource/sonarcloud-github-action@master
         #with:
         #    projectBaseDir: ShoppingCart
         env:
