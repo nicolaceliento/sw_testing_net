@@ -1,4 +1,4 @@
-# sw_testing_net
+# Software Testing .NET
 
 **Software Testing exam project at Federico II University to explain build and test automation with GitHub Actions, in a CI/CD context.**
 
