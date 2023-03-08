@@ -1,44 +1,44 @@
-name: .NET Build & Test
+name: .NET Build & Test     #workflow display name
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [ main ]      #trigger current workflow on push event on main branch
+  pull_request: 
+    branches: [ main ]      #trigger current workflow on PR event on main branch
 
 jobs:
   build:
-    name: Build & Test
+    name: Build & Test          #workflow job display name
 
-    runs-on: ubuntu-latest
-    # specify evn name configured on GitHub that include env var and secrets
-    environment: sw_testing
+    runs-on: ubuntu-latest      #run workflow on ubuntu latest version container 
+    
+    environment: sw_testing     #specify evn name configured on GitHub that include env var and secrets
 
     permissions:
-      checks: write     #permissions to post a check with test reports
+      checks: write             #permissions to post a check with test results reports into workflow
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Source Repo      #job step display name
+        uses: actions/checkout@v3       #checks-out repository under $GITHUB_WORKSPACE, so workflow can access it
   
-      - name: Setup .NET SDK 
-        uses: actions/setup-dotnet@v3
+      - name: Setup .NET SDK            #job step display name
+        uses: actions/setup-dotnet@v3   #sets up a .NET SDK CLI environment for use
         with:
-          dotnet-version: '7.0.x'
+          dotnet-version: '7.0.x'       #version of .NET SDK CLI
 
-      - name: Install dependencies from NuGet Repository
-        run: dotnet restore
+      - name: Install dependencies pkg  #job step display name
+        run: dotnet restore             #run .NET CLI restore command to install dependencies package from NuGet Repo
 
-      - name: Build project solution
-        run: dotnet build --configuration Release
+      - name: Build project solution    #job step display name
+        run: dotnet build --configuration Release   #run .NET CLI build to build project solution
 
-      - name: Run Unit Test
-        if: ${{ true }}
-        run: dotnet test --logger "trx;LogFileName=test-results.trx" || true
+      - name: Run Unit Test             #job step display name
+        run: dotnet test --logger "trx;LogFileName=test-results.trx"  #run .NET CLI test to exec UT and log results into a file
 
-      - name: Test Report
-        uses: dorny/test-reporter@v1
-        if: success() || failure()       # run this step even if previous step failed
+      - name: Publish Test Report       #job step display name
+        uses: dorny/test-reporter@v1    #extension to displays test results in GitHub Actions WF
+        if: success() || failure()      # run this step even if previous step failed
         with:
-          name: Tests Results            # Name of the check run which will be created
-          path: "**/test-results.trx"    # Path to test results
-          reporter: dotnet-trx           # Format of test results
+          name: Tests Results           # Name of the check run which will be created
+          path: "**/test-results.trx"   # Path to test results
+          reporter: dotnet-trx          # Format of test results
