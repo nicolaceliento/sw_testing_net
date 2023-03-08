@@ -9,8 +9,8 @@ namespace ShoppingCart
     public class ShoppingCartServiceFake : IShoppingCartService
     {        
         private readonly List<ShoppingItem> _shoppingCart;
-        private string password = "TestSecurityHotspot";
-        private string myIP = "192.168.1.1";
+        //private string password = "TestSecurityHotspot";
+        //private string myIP = "192.168.1.1";
 
         public ShoppingCartServiceFake()
         {
@@ -27,17 +27,17 @@ namespace ShoppingCart
 
         public IEnumerable<ShoppingItem> GetAllItems()
         {
-            //check code smell
-            string test;
-            if (true)
-            {
-                myIP = "192.168.1.1";
-            }
-            else
-            {
-                //Test coverage
-                myIP = "192.168.1.1";
-            }
+            ////check code smell
+            //string test;
+            //if (true)
+            //{
+            //    myIP = "192.168.1.1";
+            //}
+            //else
+            //{
+            //    //Test coverage
+            //    myIP = "192.168.1.1";
+            //}
 
             return _shoppingCart;
         }
