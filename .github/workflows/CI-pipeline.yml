@@ -39,5 +39,5 @@ jobs:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Run Unit Test
-        disabled: true
+        if: ${{ false }}
         run: dotnet test --no-restore --verbosity normal
