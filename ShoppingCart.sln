@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{3AECBC1E-32DB-4BB2-93ED-5453D551D02F}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		README.md = README.md
 		sonar-project.properties = sonar-project.properties
 	EndProjectSection
 EndProject
