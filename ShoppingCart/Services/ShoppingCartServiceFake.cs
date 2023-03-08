@@ -8,6 +8,8 @@ namespace ShoppingCart
 {
     public class ShoppingCartServiceFake : IShoppingCartService
     {
+        private string testSmell;
+
         private readonly List<ShoppingItem> _shoppingCart;
 
         public ShoppingCartServiceFake()
