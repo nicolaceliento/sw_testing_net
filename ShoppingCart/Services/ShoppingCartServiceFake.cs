@@ -9,6 +9,7 @@ namespace ShoppingCart
     public class ShoppingCartServiceFake : IShoppingCartService
     {        
         private readonly List<ShoppingItem> _shoppingCart;
+        private string password = "TestSecurityHotspot";
 
         public ShoppingCartServiceFake()
         {
@@ -20,11 +21,17 @@ namespace ShoppingCart
                     Name = "Diary Milk", Manufacturer="Mad Cow", Price = 4.00M },
                 new ShoppingItem() { Id = new Guid("33704c4a-5b87-464c-bfb6-51971b4d18ad"),
                     Name = "Frozen Pizza", Manufacturer="Uncle Mickey's", Price = 12.00M }
-            };            
+            };
         }
 
         public IEnumerable<ShoppingItem> GetAllItems()
         {
+            string test;
+            if (true)
+            {
+                //check code smell
+            }
+
             return _shoppingCart;
         }
 
