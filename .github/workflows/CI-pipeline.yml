@@ -8,15 +8,14 @@ on:
 
 jobs:
   build:
+    name: Build & Test
 
     runs-on: ubuntu-latest
     # specify evn name configured on GitHub that include env var and secrets
     environment: sw_testing
 
     permissions:
-      id-token: write
-      contents: read
-      checks: write
+      checks: write     #permissions to post a check with test reports
 
     steps:
       - uses: actions/checkout@v3
