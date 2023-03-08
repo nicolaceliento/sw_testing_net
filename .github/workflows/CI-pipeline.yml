@@ -30,14 +30,14 @@ jobs:
       - name: Build project solution
         run: dotnet build --configuration Release --no-restore      
 
-      - name: Static Analysis with Sonar Cloud (SonarQube cloud version)
-        uses: sonarsource/sonarcloud-github-action@master
-        #with:
-        #    projectBaseDir: ShoppingCart
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #- name: Static Analysis with Sonar Cloud (SonarQube cloud version)
+      #  uses: sonarsource/sonarcloud-github-action@master
+      #  #with:
+      #  #    projectBaseDir: ShoppingCart
+      #  env:
+      #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Run Unit Test
-        if: ${{ false }}
-        run: dotnet test --no-restore --verbosity normal
+        if: ${{ true }}
+        run: dotnet test --no-restore --verbosity normal --logger "trx;LogFileName=ShoppingCart.UnitTestsResults.trx"
