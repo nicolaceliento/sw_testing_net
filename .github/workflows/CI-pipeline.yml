@@ -2,8 +2,7 @@ name: .NET Build & Test
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -16,8 +15,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
   
       - name: Setup .NET SDK 
         uses: actions/setup-dotnet@v3
@@ -28,15 +25,7 @@ jobs:
         run: dotnet restore
 
       - name: Build project solution
-        run: dotnet build --configuration Release --no-restore      
-
-      #- name: Static Analysis with Sonar Cloud (SonarQube cloud version)
-      #  uses: sonarsource/sonarcloud-github-action@master
-      #  #with:
-      #  #    projectBaseDir: ShoppingCart
-      #  env:
-      #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: dotnet build --configuration Release
 
       - name: Run Unit Test
         if: ${{ true }}
@@ -44,8 +33,8 @@ jobs:
 
       - name: Test Report
         uses: dorny/test-reporter@v1
-        if: success() || failure()    # run this step even if previous step failed
+        if: success() || failure()       # run this step even if previous step failed
         with:
-          name: dotnet Tests            # Name of the check run which will be created
-          path: "**/test-results.trx"            # Path to test results
-          reporter: dotnet-trx          # Format of test results
+          name: Tests Results            # Name of the check run which will be created
+          path: "**/test-results.trx"    # Path to test results
+          reporter: dotnet-trx           # Format of test results
