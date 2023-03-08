@@ -13,6 +13,11 @@ jobs:
     # specify evn name configured on GitHub that include env var and secrets
     environment: sw_testing
 
+    permissions:
+      id-token: write
+      contents: read
+      checks: write
+
     steps:
       - uses: actions/checkout@v3
   
