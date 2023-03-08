@@ -23,6 +23,11 @@ namespace ShoppingCart
                 new ShoppingItem() { Id = new Guid("33704c4a-5b87-464c-bfb6-51971b4d18ad"),
                     Name = "Frozen Pizza", Manufacturer="Uncle Mickey's", Price = 12.00M }
             };
+
+            if (testSmell != null)
+            {
+
+            }
         }
 
         public IEnumerable<ShoppingItem> GetAllItems()
