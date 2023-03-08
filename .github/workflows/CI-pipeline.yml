@@ -40,7 +40,7 @@ jobs:
 
       - name: Run Unit Test
         if: ${{ true }}
-        run: dotnet test --no-restore --verbosity minimal --logger "trx;LogFileName=ShoppingCart.UnitTestsResults.trx"
+        run: dotnet test --verbosity minimal --logger "trx;LogFileName=ShoppingCart.UnitTestsResults.trx"
 
       - name: Test Report
         uses: dorny/test-reporter@v1
