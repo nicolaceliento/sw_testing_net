@@ -24,9 +24,9 @@ namespace ShoppingCart
                     Name = "Frozen Pizza", Manufacturer="Uncle Mickey's", Price = 12.00M }
             };
 
-            if (testSmell != null)
+            if (false)
             {
-
+                testSmell = "test SQ";
             }
         }
 
