@@ -20,5 +20,6 @@ The Code Analysis workflow pipelint job, instead, consists of the following step
 - Install SonarCloud scanners
 - Build and Analyze
 
-**The code quality result is: **
+**The code quality result is:**
+
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=nicolaceliento_sw_testing_net)](https://sonarcloud.io/summary/new_code?id=nicolaceliento_sw_testing_net)
