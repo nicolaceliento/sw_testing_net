@@ -9,8 +9,8 @@ namespace ShoppingCart
     public class ShoppingCartServiceFake : IShoppingCartService
     {        
         private readonly List<ShoppingItem> _shoppingCart;
-        private string password = "TestSecurityHotspot";
-        private string myIP = "192.168.1.1";
+        //private string password = "TestSecurityHotspot";
+        //private string myIP = "192.168.1.1";
 
         public ShoppingCartServiceFake()
         {
