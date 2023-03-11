@@ -56,7 +56,7 @@ jobs:
 
       - name: Publish Test Report 
         #extension to displays test results in GitHub Actions WF  
-        uses: dorny/test-reporter@v1    
+        uses: dorny/test-reporter@v1.6.0    
         # run this step even if previous step failed
         if: success() || failure()      
         with:
