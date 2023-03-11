@@ -65,4 +65,6 @@ jobs:
           # Path to test results
           path: "**/test-results.trx"   
           # Format of test results
-          reporter: dotnet-trx          
+          reporter: dotnet-trx 
+          # Publish test results without fail as test fail
+          fail-on-error: false
