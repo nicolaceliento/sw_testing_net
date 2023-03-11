@@ -1,0 +1,51 @@
+#workflow display name
+name: Static Analysis
+
+#TRIGGERS SECTION
+on:
+  #trigger current WF on push event on main branch
+  push:
+    branches: [ main ] 
+  #trigger current WF on Pull Request event on main branch
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+#JOBS SECTION
+jobs:
+  build:
+    #job display name
+    name: Static Analysis    
+
+    runs-on: ubuntu-latest
+
+    environment: sw_testing    
+    
+    #STEPS SECTION
+    steps:
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.11
+      - name: Checkout Source Repo 
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v1
+        with:
+          path: ~\sonar\cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Install SonarCloud & Coverage tools
+        run: |
+          dotnet tool install --global dotnet-sonarscanner
+          dotnet tool install --global dotnet-coverage
+      - name: Build and Analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          dotnet-sonarscanner begin /k:"nicolaceliento_sw_testing_net" /o:"nicolaceliento" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+          dotnet build --no-incremental
+          dotnet-coverage collect "dotnet test" -f xml -o "coverage.xml"
+          dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"

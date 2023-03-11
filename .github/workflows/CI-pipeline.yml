@@ -1,0 +1,68 @@
+# This workflow will build a .NET project, run Unit Test 
+# and publish test result on GitHub Actions workflow result
+
+#workflow display name
+name: .NET Build & Test
+
+#TRIGGERS SECTION
+on:
+  #trigger current WF on push event on main branch
+  push:
+    branches: [ main ]
+  #trigger current WF on Pull Request event on main branch
+  pull_request: 
+    branches: [ main ]
+
+#JOBS SECTION
+jobs:
+  build:
+    #job display name
+    name: Build & Test
+
+    #run workflow on ubuntu latest version container 
+    runs-on: ubuntu-latest
+    
+    #specify evn name configured on GitHub that include env var and secrets
+    environment: sw_testing
+
+    #permissions to post a check with test results reports into workflow
+    permissions:
+      checks: write
+
+    #STEPS SECTION
+    steps:   
+      - name: Checkout Source Repo
+        #checks-out repo under $GITHUB_WORKSPACE, so workflow can access it
+        uses: actions/checkout@v3
+  
+      - name: Setup .NET SDK
+        #sets up a .NET SDK CLI environment for use
+        uses: actions/setup-dotnet@v3
+        with:
+          #version of .NET SDK CLI
+          dotnet-version: '7.0.x'
+        
+      - name: Install dependencies packages  
+        #run .NET CLI cmd to install dependencies pkg from NuGet Repo
+        run: dotnet restore             
+
+      - name: Build project solution    
+        #run .NET CLI build to build project solution
+        run: dotnet build --configuration Release   
+
+      - name: Run Unit Test   
+        #run .NET CLI test to exec UT and log results into a file  
+        run: dotnet test --logger "trx;LogFileName=test-results.trx"  
+
+      - name: Publish Test Report 
+        #extension to displays test results in GitHub Actions WF  
+        uses: dorny/test-reporter@v1    
+        # run this step even if previous step failed
+        if: success() || failure()      
+        with:
+          # Name of the check run which will be created
+          name: Tests Results           
+          # Path to test results
+          path: "**/test-results.trx"   
+          # Format of test results
+          reporter: dotnet-trx          

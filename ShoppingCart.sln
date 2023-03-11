@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart", "ShoppingCart\ShoppingCart.csproj", "{7F874E27-8248-488A-9013-F3AFC159C136}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{3AECBC1E-32DB-4BB2-93ED-5453D551D02F}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+		sonar-project.properties = sonar-project.properties
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.UnitTests", "ShoppingCart.UnitTests\ShoppingCart.UnitTests.csproj", "{68D6B1AE-FBD5-4D70-BD78-245AC0FCFF51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F874E27-8248-488A-9013-F3AFC159C136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F874E27-8248-488A-9013-F3AFC159C136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F874E27-8248-488A-9013-F3AFC159C136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F874E27-8248-488A-9013-F3AFC159C136}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68D6B1AE-FBD5-4D70-BD78-245AC0FCFF51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68D6B1AE-FBD5-4D70-BD78-245AC0FCFF51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68D6B1AE-FBD5-4D70-BD78-245AC0FCFF51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68D6B1AE-FBD5-4D70-BD78-245AC0FCFF51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA769AC7-98B1-4C15-96B1-E2B394BE8835}
+	EndGlobalSection
+EndGlobal
