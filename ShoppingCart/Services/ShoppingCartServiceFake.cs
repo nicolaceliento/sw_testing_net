@@ -25,11 +25,9 @@ namespace ShoppingCart
 
         public IEnumerable<ShoppingItem> GetAllItems()
         {
-            if (false) {
-                object o = null;
-                Console.WriteLine(o.ToString());
-            }
-
+            object o = null;
+            Console.WriteLine(o.ToString());
+            
             return _shoppingCart;
         }
 
