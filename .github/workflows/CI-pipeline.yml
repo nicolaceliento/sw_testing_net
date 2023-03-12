@@ -22,9 +22,6 @@ jobs:
     #run workflow on ubuntu latest version container 
     runs-on: ubuntu-latest
     
-    #specify evn name configured on GitHub that include env var and secrets
-    environment: sw_testing
-
     #permissions to post a check with test results reports into workflow
     permissions:
       checks: write

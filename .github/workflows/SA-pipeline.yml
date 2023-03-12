@@ -1,3 +1,6 @@
+# This workflow will build a .NET project, run SonarCloud Static Analysis 
+# and collect Code Coverage results on SonarCloud.io
+
 #workflow display name
 name: Static Analysis
 
@@ -16,34 +19,45 @@ jobs:
     #job display name
     name: Static Analysis    
 
+    #run workflow on ubuntu latest version container
     runs-on: ubuntu-latest
 
-    environment: sw_testing    
+    #specify evn name configured on GitHub that include env var and secrets
+    environment: sw_testing
     
     #STEPS SECTION
     steps:
       - name: Checkout Source Repo 
-        uses: actions/checkout@v2
+        #checks-out repo under $GITHUB_WORKSPACE, so workflow can access it
+        uses: actions/checkout@v3
+        #Shallow clones should be disabled for a better relevancy of analysis
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0  
+
       - name: Setup JDK 11
+        #setup Java 11 JDK to execute Sonar scanner for analysis
         uses: actions/setup-java@v1
         with:
           java-version: 1.11
       - name: Cache SonarCloud packages
+        #cache SonarCloud packages dependencies to improve workflow.
         uses: actions/cache@v1
         with:
           path: ~\sonar\cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
       - name: Install SonarCloud & Coverage tools
+        #install SonarCloud and Coverage tools
         run: |
           dotnet tool install --global dotnet-sonarscanner
           dotnet tool install --global dotnet-coverage
       - name: Build and Analyze
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          #token to authenticate GitHub App installed on repo
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          #Needed to execute SonarCloud scanner
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        #run source Build, SonarCloud Analysis and Coverage tools
         run: |
           dotnet-sonarscanner begin /k:"nicolaceliento_sw_testing_net" /o:"nicolaceliento" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
           dotnet build --no-incremental
