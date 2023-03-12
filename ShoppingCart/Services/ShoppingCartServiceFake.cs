@@ -25,9 +25,6 @@ namespace ShoppingCart
 
         public IEnumerable<ShoppingItem> GetAllItems()
         {
-            object o = null;
-            Console.WriteLine(o.ToString());
-            
             return _shoppingCart;
         }
 
@@ -40,6 +37,9 @@ namespace ShoppingCart
 
         public ShoppingItem GetById(Guid id)
         {
+            if (false) {
+                string s = string.Format("{0} {1}", id);
+            }
             return _shoppingCart.FirstOrDefault(a => a.Id == id);
         }
 
