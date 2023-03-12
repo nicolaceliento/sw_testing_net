@@ -26,8 +26,10 @@ namespace ShoppingCart
         public IEnumerable<ShoppingItem> GetAllItems()
         {
             if (false) {
-                return _shoppingCart.Where(i => i.Price > 0);
+                object o = null;
+                Console.WriteLine(o.ToString());
             }
+
             return _shoppingCart;
         }
 
