@@ -37,8 +37,7 @@ namespace ShoppingCart
 
         public ShoppingItem GetById(Guid id)
         {
-            return _shoppingCart.Where(a => a.Id == id)
-                .FirstOrDefault();
+            return _shoppingCart.FirstOrDefault(a => a.Id == id);
         }
 
         public void Remove(Guid id)
