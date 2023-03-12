@@ -14,11 +14,11 @@ The Continuous Integration workflow pipeline job consists of the following steps
 - Publish Test Report
 
 The Code Analysis workflow pipelint job, instead, consists of the following steps:
-- Set up JDK 11      
 - Checkout Source Repo        
+- Setup JDK 11      
 - Cache SonarCloud packages       
 - Install SonarCloud scanners
-- Build and Analyze
+- Build, Analyze and collect Code Coverage
 
 **The code quality result is:**
 
